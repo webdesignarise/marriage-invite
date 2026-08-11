@@ -194,7 +194,7 @@ function createConfetti() {
 
   setTimeout(() => {
     confetti.remove();
-  },30000);
+  },7000);
 
 }
 //
