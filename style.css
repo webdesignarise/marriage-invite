@@ -419,15 +419,21 @@ section .sec-1{
   z-index: 3;
   align-items: center;
   justify-content: center;
-
+  padding: 30px;
 }
 
 .cover p {
-position: relative;
-  font-size: 20px;
+  position: relative;
+  font-size: 15px;
   margin-bottom: 75px;
   z-index: 3;
   padding: 20px;
+
+}
+.cover p1{
+    position: relative;
+    color: #fff;
+    z-index: 3;
 
 }
 
@@ -448,7 +454,12 @@ position: relative;
     transform: scale(1.08);
   }
 }
-
+@media screen  and (max-width:400px){
+    .cover p1{
+        align-items: center;
+    }
+    
+}
 
 .confetti {
   position: fixed;
@@ -514,7 +525,7 @@ position: relative;
     height: 200px;
     width: 250px;
     border-radius: 20px;
-    top: 30%;
+    top: 20%;
     border: 2px solid black;
 
 }
