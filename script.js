@@ -1,16 +1,21 @@
-let text =document.querySelector('.text');
 let text1 =document.querySelector('.text1');
 let text2 =document.querySelector('.text2');
 let text3 =document.querySelector('.text3');
+let text4 =document.querySelector('.text4');
+let image5 =document.querySelector('.image5');
+let image6 =document.querySelector('.image6');
 
 
 window.addEventListener('scroll',()=>{
     let value = window.scrollY;
 
-    text.style.marginTop = value * 2.5 + 'px'
+    
     text1.style.marginLeft = value * 2.5 + 'px'
-    text2.style.marginBottom = value * 2.5 + 'px'
+    text2.style.marginTop = value * 2.5 + 'px'
     text3.style.marginRight= value * 2.5 + 'px'
+    text4.style.marginBottom = value * 2.5 + 'px'
+    image5.style.marginBottom = value * 2.5 + 'px'
+    image6.style.marginLeft = value * 2.5 + '25px'
 
 });
 const canvas = document.getElementById('scratchCanvas');
@@ -26,7 +31,7 @@ function resizeCanvas(){
 
     ctx.scale(dpr,dpr);
 
-    ctx.fillStyle ="#999";
+    ctx.fillStyle ="#202e37";
     ctx.fillRect(0,0,rect.width,rect.height);
 
     ctx.fillStyle ="#666";
@@ -57,7 +62,7 @@ function scratch(e) {
     ctx.globalCompositeOperation = "destination-out";
 
     ctx.beginPath();
-    ctx.arc(x,y,25,0,Math.PI * 2);
+    ctx.arc(x,y,50,0,Math.PI * 2);
     ctx.fill();
 }
 
@@ -138,10 +143,33 @@ window.onscroll =() =>{
     })
 }
 
+
+
+//door open
+
+function openInvitation() { 
+    document.getElementById("image7");
+    document.getElementById("image8");
+
+image7.addEventListener("click", () => {
+    image7.classList.toggle("open");
+});
+}
+
+
+
 //tap to open
 
 function openInvitation() {
-  document.getElementById("cover").classList.add("open");
+  document.querySelector(".image7").classList.toggle("open");
+   document.querySelector(".image8").classList.toggle("open");
+   document.querySelector(".cover-content").style.display="none";
+//    document.querySelector(".sec-1").style.display="block";
+//     document.querySelector(".good").style.display="block";
+//     document.querySelector(".scratch-card").style.display="block";
+//    document.querySelector(".four").style.display="block";
+//    document.querySelector(".navigation").style.display="block";
+
 
   // Confetti
   for (let i = 0; i < 40; i++) {
@@ -160,24 +188,24 @@ function createConfetti() {
 
   confetti.style.left = Math.random() * 100 + "vw";
   confetti.style.animationDuration =
-    (2 + Math.random() * 3) + "s";
+    (2 + Math.random() * 5) + "s";
 
   document.body.appendChild(confetti);
 
   setTimeout(() => {
     confetti.remove();
-  }, 5000);
+  },30000);
 
 }
 //
-// var sec1 = document.querySelector(".sec-1");
-// var scratchcard = document.querySelector(".scratch-card");
-// var four = document.querySelector(".four");
-// var photo = document.querySelector(".photo");
-// function openInvitation(){
-//     sec1.style.display = "block";
+//  var cover = document.querySelector(".cover");
+// // var scratchcard = document.querySelector(".scratch-card");
+// // var four = document.querySelector(".four");
+// // var photo = document.querySelector(".photo");
+//  function openInvitation(){
+//      cover.style.display = "none";
 
-//     scratchcard.style.display = "block";
-//     four.style.display = "block";
-//     photo.style.display = "block";}
-
+// //     scratchcard.style.display = "block";
+// //     four.style.display = "block";
+// //     photo.style.display = "block";}
+//  }
