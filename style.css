@@ -292,7 +292,7 @@ section .sec-1{
     border-radius: 15px;
 }
 .popup p{
-    color: green;
+    color: gold;
     position: relative;
     justify-content: center;
     align-self: center;
@@ -551,6 +551,6 @@ position: relative;
      font-family: "Sekuya", system-ui;
     font-style: normal; 
     font-size: 18px;
-    color:white ;
+    color:green ;
     
 } 

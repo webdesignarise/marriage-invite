@@ -31,7 +31,7 @@ function resizeCanvas(){
 
     ctx.scale(dpr,dpr);
 
-    ctx.fillStyle ="#202e37";
+    ctx.fillStyle ="#e8d3a5";
     ctx.fillRect(0,0,rect.width,rect.height);
 
     ctx.fillStyle ="#666";
