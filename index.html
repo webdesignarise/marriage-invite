@@ -1,344 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Scratch Card</title>
-
-<style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #f8d7a4, #f5b7c8);
-  font-family: Arial, sans-serif;
-}
-
-.container {
-  text-align: center;
-}
-
-h2 {
-  color: #7b263a;
-  margin-bottom: 20px;
-}
-
-.scratch-card {
-  position: relative;
-  width: 320px;
-  height: 180px;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-  background: white;
-}
-
-.prize {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: #fff8e7;
-  color: #7b263a;
-}
-
-.prize .emoji {
-  font-size: 45px;
-}
-
-.prize h1 {
-  margin: 8px 0;
-  font-size: 27px;
-}
-
-.prize p {
-  margin: 0;
-}
-
-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  touch-action: none;
-}
-
-.progress {
-  margin-top: 15px;
-  color: #7b263a;
-  font-weight: bold;
-}
-
-button {
-  margin-top: 15px;
-  padding: 10px 22px;
-  border: none;
-  border-radius: 25px;
-  background: #7b263a;
-  color: white;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-button:hover {
-  opacity: 0.9;
-}
-</style>
-</head>
-
-<body>
-
-<div class="container">
-
-  <h2>🎁 Scratch & Win 🎁</h2>
-
-  <div class="scratch-card" id="card">
-
-    <div class="prize">
-      <div class="emoji">🎉</div>
-      <h1>Congratulations!</h1>
-      <p>You Won ₹500 🎊</p>
-    </div>
-
-    <canvas id="scratchCanvas"></canvas>
-
-  </div>
-
-  <div class="progress" id="progress">
-    Scratched: 0%
-  </div>
-
-  <button onclick="resetCard()">🔄 Try Again</button>
-
-</div>
+<canvas id="scratchCanvas"></canvas>
 
 <script>
 const canvas = document.getElementById("scratchCanvas");
 const ctx = canvas.getContext("2d");
-const card = document.getElementById("card");
-const progressText = document.getElementById("progress");
 
-let isDrawing = false;
-let scratched = false;
+function resizeCanvas() {
+  const rect = canvas.getBoundingClientRect();
 
-function setupCanvas() {
+  canvas.width = rect.width * devicePixelRatio;
+  canvas.height = rect.height * devicePixelRatio;
 
-  const rect = card.getBoundingClientRect();
+  ctx.scale(devicePixelRatio, devicePixelRatio);
 
-  canvas.width = rect.width;
-  canvas.height = rect.height;
-
-  // Scratch layer
+  // Scratch coating
   ctx.fillStyle = "#999";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillRect(0, 0, rect.width, rect.height);
 
-  // Decorative text
-  ctx.fillStyle = "#ffffff";
-  ctx.font = "bold 24px Arial";
+  ctx.fillStyle = "#fff";
+  ctx.font = "bold 20px Arial";
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  ctx.fillText(
-    "SCRATCH HERE",
-    canvas.width / 2,
-    canvas.height / 2
-  );
-
-  // Add dots
-  for (let i = 0; i < 100; i++) {
-    ctx.fillStyle = "rgba(255,255,255,0.25)";
-    ctx.beginPath();
-    ctx.arc(
-      Math.random() * canvas.width,
-      Math.random() * canvas.height,
-      2,
-      0,
-      Math.PI * 2
-    );
-    ctx.fill();
-  }
+  ctx.fillText("SCRATCH HERE", rect.width / 2, rect.height / 2);
 }
 
-setupCanvas();
+resizeCanvas();
 
-function getPosition(e) {
+let scratching = false;
+
+function scratch(e) {
+  if (!scratching) return;
 
   const rect = canvas.getBoundingClientRect();
 
-  if (e.touches) {
-    return {
-      x: e.touches[0].clientX - rect.left,
-      y: e.touches[0].clientY - rect.top
-    };
-  }
-
-  return {
-    x: e.clientX - rect.left,
-    y: e.clientY - rect.top
-  };
-}
-
-function scratch(e) {
-
-  if (!isDrawing) return;
-
-  const pos = getPosition(e);
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
 
   ctx.globalCompositeOperation = "destination-out";
 
   ctx.beginPath();
-  ctx.arc(pos.x, pos.y, 50, 0, Math.PI * 2);
+  ctx.arc(x, y, 25, 0, Math.PI * 2);
   ctx.fill();
-
-  checkProgress();
 }
 
-canvas.addEventListener("mousedown", () => {
-  isDrawing = true;
-});
-
-canvas.addEventListener("mouseup", () => {
-  isDrawing = false;
-});
-
-canvas.addEventListener("mouseleave", () => {
-  isDrawing = false;
-});
-
-canvas.addEventListener("mousemove", scratch);
-
-canvas.addEventListener("touchstart", (e) => {
+canvas.addEventListener("pointerdown", (e) => {
   e.preventDefault();
-  isDrawing = true;
+  scratching = true;
+  canvas.setPointerCapture(e.pointerId);
   scratch(e);
 });
 
-canvas.addEventListener("touchmove", (e) => {
+canvas.addEventListener("pointermove", (e) => {
   e.preventDefault();
   scratch(e);
 });
 
-canvas.addEventListener("touchend", () => {
-  isDrawing = false;
-
-});
-canvas.addEventListener("touchup", () => {
-  isDrawing = false;
+canvas.addEventListener("pointerup", (e) => {
+  scratching = false;
+  canvas.releasePointerCapture(e.pointerId);
 });
 
-function checkProgress() {
-
-  const pixels = ctx.getImageData(
-    0,
-    0,
-    canvas.width,
-    canvas.height
-  ).data;
-
-  let transparent = 0;
-
-  for (let i = 3; i < pixels.length; i += 4) {
-    if (pixels[i] === 0) {
-      transparent++;
-    }
-  }
-
-  const total = canvas.width * canvas.height;
-
-  const percentage = Math.round(
-    (transparent / total) * 100
-  );
-
-  progressText.innerText =
-    "Scratched: " + percentage + "%";
-
-  if (percentage >= 50 && !scratched) {
-
-    scratched = true;
-
-    // Automatically reveal remaining area
-    ctx.clearRect(
-      0,
-      0,
-      canvas.width,
-      canvas.height
-    );
-
-    progressText.innerText =
-      "🎉 Prize Revealed! 🎉";
-
-    createConfetti();
-  }
-}
-
-function resetCard() {
-
-  scratched = false;
-
-  setupCanvas();
-
-  progressText.innerText =
-    "Scratched: 0%";
-}
-
-
-// Confetti
-function createConfetti() {
-
-  for (let i = 0; i < 80; i++) {
-
-    const confetti = document.createElement("div");
-
-    confetti.innerHTML = ["🎉","🎊","✨","💖"][
-      Math.floor(Math.random() * 4)
-    ];
-
-    confetti.style.position = "fixed";
-    confetti.style.left =
-      Math.random() * 100 + "vw";
-
-    confetti.style.top = "-30px";
-
-    confetti.style.fontSize =
-      Math.random() * 20 + 15 + "px";
-
-    confetti.style.zIndex = "9999";
-
-    document.body.appendChild(confetti);
-
-    const duration =
-      Math.random() * 2000 + 2000;
-
-    confetti.animate(
-      [
-        {
-          transform: "translateY(0) rotate(0deg)"
-        },
-        {
-          transform:
-            "translateY(110vh) rotate(720deg)"
-        }
-      ],
-      {
-        duration: duration,
-        easing: "ease-in"
-      }
-    );
-
-    setTimeout(() => {
-      confetti.remove();
-    }, duration);
-  }
-}
+canvas.addEventListener("pointercancel", () => {
+  scratching = false;
+});
 </script>
 
-</body>
-</html>
+<style>
+#scratchCanvas {
+  width: 300px;
+  height: 180px;
+  display: block;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+</style>
