@@ -29,7 +29,7 @@ function resizeCanvas(){
     canvas.width = rect.width * dpr;
     canvas.height=rect.height * dpr;
 
-    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.scale(dpr,dpr);
 
     ctx.fillStyle ="#e8d3a5";
     ctx.fillRect(0,0,rect.width,rect.height);
@@ -75,10 +75,10 @@ canvas.addEventListener("pointerdown",(e) => {
 // canvas.setPointerCapture(e.pointerId);
 
 canvas.addEventListener("pointermove",scratch);
-canvas.addEventListener("pointerup",() => {
+canvas.addEventListener("pointerup",(e) => {
     scratching = false;
 });
-canvas.addEventListener("pointerleave",() => {
+canvas.addEventListener("pointerleave",(e) => {
     scratching = false;
 });
 
