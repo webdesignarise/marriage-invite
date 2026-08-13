@@ -33,18 +33,17 @@ section{
 .text1{
      position: absolute;
     font-size: 2em;
-    color: #000;
     text-shadow: 2px 2px 4px rgba(0,0,0,.2);
     z-index: inherit;
     top: 25%;
     font-family: "sekuya", system-ui;
     font-weight: 400;
     font-style: normal;
-    color: #e34234;
+    color: #24523a;
 }
 .text2{
     font-size: 2em;
-    color:#e34234;
+    color:#EA8FB6;
     position: absolute;
     filter:drop-shadow(10px 10px 10px black);
     animation: heartbeat 1s infinite ease-in-out;
@@ -65,7 +64,7 @@ section{
     font-weight: 400;
     font-style: normal;
     z-index: inherit;
-    color: #e34234;
+    color: #24523a;
 
 }
 .text4{
@@ -177,10 +176,12 @@ margin: 0 -35px 0 35px;
     position: absolute;
     width: 190px;
     height:190px;
+    opacity: 0.9;
     z-index:10; 
     top: 5%;
     border-radius: 10px;
     right: 3%;
+    background-image: transparent;
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -264,7 +265,7 @@ section .sec-1{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 300px;
+    height: 350px;
     width: 500px;
     border-radius: 100%;
     z-index: 1; 
@@ -278,12 +279,32 @@ section .sec-1{
     left: 0;
     width: 100%;
     height: 100%;
-    touch-action: none;
-    /* cursor: grab;*/
+    /* touch-action: none; */
+    display: block;
+    cursor: pointer;
 } 
+.line2{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 50%;
+    margin: 70px ;
+}
+.line2::before,
+.line2::after{
+    content:"";
+    flex: 1;
+    height: 4px;
+    background: gold;
+    border-radius: 100%;
+}
+.line2 span{
+    font-size: 25px;
+    color: white;
+}
 .popup{
     width: 300px;
-    height: 180px;
+    height: 200px;
     background:transparent;
     display: flex;
     flex-direction: column;
@@ -291,16 +312,25 @@ section .sec-1{
     align-items: center;
     border-radius: 15px;
 }
+hr{
+    width: 40%;
+    height: 30px;
+    color: gold;
+    border-radius:100%;
+    
+}
 .popup p{
     color: gold;
     position: relative;
     justify-content: center;
     align-self: center;
     text-align: center;
-    font-size: 1rem;
-    padding: 14px;
+    font-size: 15px;
     font-family: "Sekuya", system-ui;
     font-style: normal;
+    padding: 3px;
+    margin-top:-28PX;
+    margin-bottom: -27px;
 }
 
 
@@ -326,7 +356,7 @@ section .sec-1{
     font-family: "Great Vibes", cursive;
     font-weight: 400;
     font-style: normal;
-    color: #e34234;
+    color: gold;
 } 
 .timer{
     position: relative;
@@ -492,13 +522,28 @@ position: relative;
 }
 .last{
     position: relative;
-    height: 100vh;
+    height: 135vh;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 30px;
+    padding: 10px;
     background-color: #F1E5AC;
 }
+.last .line1{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 80%;
+    margin: 30px auto;
+}
+.line1::before,
+.line1::after{
+    content:"";
+    flex: 1;
+    height: 1px;
+    background: #2f5d3a;
+}
+
 .last h1{
     position: relative;
     align-items: center;
@@ -510,16 +555,16 @@ position: relative;
     font-size: 3em;
     padding: 20px;
 }
-.last p{
+.last p1{
     position: relative;
     align-items: center;
     justify-content: center;
     display: flex;
-    padding: 30px;
     font-family: "sekuya",system ui;
-    color: #e34234;
-    font-size: 20px;
+    color: #24523a;
+    font-size: 15px;
     display: flex;
+    word-spacing: 5px;
 }
 
 .time3{
@@ -551,6 +596,20 @@ position: relative;
      font-family: "Sekuya", system-ui;
     font-style: normal; 
     font-size: 18px;
-    color:green ;
+    color:#24523a ;
+    align-items: center;
     
 } 
+.line1 span{
+    font-size: 25px;
+    color: #e34234;
+}
+.last p1 span{
+    font-size: 25px;
+    color: #2f5d3a;
+    word-spacing: 15px;
+}
+.png{
+    width: 70px;
+    left: -10%;
+}

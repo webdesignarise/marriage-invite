@@ -1,76 +1,125 @@
-<canvas id="scratchCanvas"></canvas>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIJAY-GAYU-MARRIAGE-INVITATION</title>
 
-<script>
-const canvas = document.getElementById("scratchCanvas");
-const ctx = canvas.getContext("2d");
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Libertinus+Serif:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Sekuya&display=swap" rel="stylesheet">    <link rel="stylesheet" href="style.css">
 
-function resizeCanvas() {
-  const rect = canvas.getBoundingClientRect();
+</head>
+<body>
+          <div class="invitation">
 
-  canvas.width = rect.width * devicePixelRatio;
-  canvas.height = rect.height * devicePixelRatio;
+  <!-- Tap to open screen -->
+  <div class="cover">
+     <img src="7.jpeg" class="image7" height="100%" width="100%">
+      <img src="8.jpeg" class="image8" height="100%" width="100%">
 
-  ctx.scale(devicePixelRatio, devicePixelRatio);
+    <div class="cover-content">
+      <!-- <div style="font-size:50px;">💍</div> -->
 
-  // Scratch coating
-  ctx.fillStyle = "#999";
-  ctx.fillRect(0, 0, rect.width, rect.height);
+      <p class="p1">You're Invited</p1>
 
-  ctx.fillStyle = "#fff";
-  ctx.font = "bold 20px Arial";
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-  ctx.fillText("SCRATCH HERE", rect.width / 2, rect.height / 2);
-}
+      <h1 class="h1">Wedding Invitation</h1>
 
-resizeCanvas();
+      <p class="p2">Tap below to open</p>
 
-let scratching = false;
+      <button class="open-btn" onclick="openInvitation()">
+        💌 Open Invitation
+      </button>
+    </div>
+  </div>
 
-function scratch(e) {
-  if (!scratching) return;
+    <section class="parallex">
+        <h1 class="text1">VIJAY</h1>
+        <h3 class="text2">&#x1F495;</h3>
+        <h1 class="text3">GAYATHRI</h1>
+        <h2 class="text4">WE'RE GETTING MARRIED</h2>
+        <h5 class="word1">scroll down &#x2304;</h5>   
+        <img src="1.jpeg" id="hill3" height="100%" width="100%" >
+    </section>
+    </div>
+      <section class="sec-1">
+        <img src="4.jpeg" id="hill3" height="100%" width="100%" > -->
+        <img src="5.jpeg" class="image5" width="100px" height="100px">
+        <video  autoplay muted loop class="image6" width="100px" height="100px">
+          <source src="video.mp4" type="video/mp4">
+        </video>
+      <p1 class="animate">&#9829 “✨ Love is in the air ✨ Join us for a magical celebration of love, happiness, and togetherness 💕”<br><br></p1>
+      </section>
+      <section class="good">
+        <img src="9.jpeg" width="100%" height="100%">
+      <div class="scratch-card">
+        
+      <div class="popup">
+        <div class="line2">
+          <span>❦</span>
+        </div>
+        <P>DATE : 12 &#x2764; 09 &#x2764; 2026</P>
+        <br><br><hr><br><br>
+        <P>DAY : SATURDAY</P>
+        <br><br><hr><br><br>
+        <P>TIME : 5PM</P>
+        <br><br><hr><br><br>
+        <P>VENUE: ARS MAHAL</P>
+         <div class="line2">
+          <span>❦</span>
+        </div> 
+        </div>
+        
+        <canvas id="scratchCanvas"></canvas>
+        
+       </div>
+       <div class="countdown">
+        <h1>Counting Down To ForEver &#x1F495;</h1>
+        <div class="timer">
+            <div class="box">
+                <span id="days">00</span>
+                <small>Days</small>
+            </div>
+            <div class="box">
+                <span id="hours">00</span>
+                <small>Hours</small>
+            </div>
+            <div class="box">
+                <span id="minutes">00</span>
+                <small>Minutes</small>
+            </div>
+            <div class="box">
+                <span id="seconds">00</span>
+                <small>Seconds</small>
+            </div>
+            <div id="message"></div>
+        </div>
+        </div>
+      </section>
 
-  const rect = canvas.getBoundingClientRect();
+      <!-- <section class="timeline-activity"></section> -->
+       <div class="last">
+        <h1>Function Timeline</h1>
+        <div class="line1">
+          <span>❦</span>
+        </div>
+        <p1> <span><img src="11.png" class="png"></span>. 5pm : GUEST ARRIVAL</p1>
+        <div class="line1">
+          <span>❦</span>
+        </div>
+        <p1><span><img src="10.png" class="png"></span> 6pm : RECEPTION</p1>
+                <div class="line1">
+          <span>❦</span>
+        </div>
+        
+        <p1><span><img src="12.png" class="png" ></span>. 7pm : DINNER</p1>
+        <div class="line1">
+          <span>❦</span>
+        </div>
+        <h2>&#x1F491;<br><br>இணைந்த இரு இதயங்கள்<br><br> இனிதாய் பயணிக்கட்டும்<br><br>&#x1F491;</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3905.2379363945975!2d77.8576401!3d11.818602199999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baeab485680d851%3A0x3156b353f1568044!2sARS%20Mahal%20(Marriage%20Hall)!5e0!3m2!1sen!2sin!4v1786446778052!5m2!1sen!2sin" width="200px" height="200px" style="border:2px solid gray;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+       </div>
+            <script src="script.js"></script>
+</body>
+</html>
 
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-
-  ctx.globalCompositeOperation = "destination-out";
-
-  ctx.beginPath();
-  ctx.arc(x, y, 25, 0, Math.PI * 2);
-  ctx.fill();
-}
-
-canvas.addEventListener("pointerdown", (e) => {
-  e.preventDefault();
-  scratching = true;
-  canvas.setPointerCapture(e.pointerId);
-  scratch(e);
-});
-
-canvas.addEventListener("pointermove", (e) => {
-  e.preventDefault();
-  scratch(e);
-});
-
-canvas.addEventListener("pointerup", (e) => {
-  scratching = false;
-  canvas.releasePointerCapture(e.pointerId);
-});
-
-canvas.addEventListener("pointercancel", () => {
-  scratching = false;
-});
-</script>
-
-<style>
-#scratchCanvas {
-  width: 300px;
-  height: 180px;
-  display: block;
-  touch-action: none;
-  user-select: none;
-  -webkit-user-select: none;
-}
-</style>
