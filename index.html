@@ -228,6 +228,7 @@ canvas.addEventListener("touchmove", (e) => {
 
 canvas.addEventListener("touchend", () => {
   isDrawing = false;
+  e.preventDefault();
 });
 
 function checkProgress() {
