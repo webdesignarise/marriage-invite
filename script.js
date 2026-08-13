@@ -63,7 +63,7 @@ function scratch(e) {
 
     ctx.beginPath();
     ctx.arc(x,y,50,0,Math.PI * 2);
-    ctx.fill();
+    ctx.fill()
 }
 
 
@@ -72,13 +72,12 @@ canvas.addEventListener("pointerdown",(e) => {
     scratching = true;
     scratch(e);
 });
-// canvas.setPointerCapture(e.pointerId);
 
 canvas.addEventListener("pointermove",scratch);
-canvas.addEventListener("pointerup",(e) => {
+canvas.addEventListener("pointerup",() => {
     scratching = false;
 });
-canvas.addEventListener("pointerleave",(e) => {
+canvas.addEventListener("pointerleave",() => {
     scratching = false;
 });
 
