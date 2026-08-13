@@ -65,7 +65,15 @@ function scratch(e) {
     ctx.arc(x,y,50,0,Math.PI * 2);
     ctx.fill()
 }
+function revealCard(){
+    if (revealed) return;
 
+    revealed=true;
+    scratching=false;
+    canvas.style.pointerEvents="none";
+    canvas.style.opacity="0";
+    
+}
 
 
 canvas.addEventListener("pointerdown",(e) => {
