@@ -282,6 +282,7 @@ section .sec-1{
     touch-action:pan-y;
     display: block;
     cursor: pointer;
+    overflow: hidden;
 } 
 .line2{
     display: flex;

@@ -72,7 +72,7 @@ function revealCard(){
     scratching=false;
     canvas.style.pointerEvents="none";
     canvas.style.opacity="0";
-    
+    canvas.style.display="none";
 }
 
 
