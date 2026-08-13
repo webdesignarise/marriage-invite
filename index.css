@@ -1,0 +1,274 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Georgia, "Times New Roman", serif;
+    background: #050505;
+    color: white;
+}
+
+/* =========================
+   CINEMATIC INTRO
+========================= */
+
+.intro {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at center, #24170e 0%, #090705 45%, #000 100%);
+    perspective: 1200px;
+    transition: 1.5s ease;
+}
+
+.intro.hide {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.3);
+}
+
+.cinema {
+    text-align: center;
+    animation: cinemaZoom 5s ease forwards;
+}
+
+.small-title {
+    letter-spacing: 8px;
+    font-size: 12px;
+    color: #d7b46a;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+.main-title {
+    font-size: clamp(45px, 12vw, 100px);
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: #f7df9c;
+    text-shadow:
+        0 0 10px rgba(255,215,120,.4),
+        0 0 35px rgba(255,170,60,.25);
+}
+
+.names {
+    margin-top: 25px;
+    font-size: clamp(24px, 6vw, 55px);
+    font-style: italic;
+    color: #fff;
+}
+
+.date {
+    margin-top: 25px;
+    color: #c9a85c;
+    letter-spacing: 5px;
+}
+
+.tap {
+    margin-top: 55px;
+    padding: 14px 30px;
+    border: 1px solid #c9a85c;
+    background: transparent;
+    color: #f6dc98;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.tap:hover {
+    background: #c9a85c;
+    color: #111;
+    box-shadow: 0 0 30px rgba(201,168,92,.5);
+}
+
+@keyframes cinemaZoom {
+    0% {
+        transform: scale(.7);
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* =========================
+   MAIN INVITATION
+========================= */
+
+.invitation {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 50% 30%, #382516, #100b07 55%, #030303);
+}
+
+.light {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255,193,83,.16), transparent 70%);
+    filter: blur(20px);
+    animation: lightMove 8s infinite alternate ease-in-out;
+}
+
+@keyframes lightMove {
+    from {
+        transform: translate(-30%, -10%);
+    }
+    to {
+        transform: translate(80%, 30%);
+    }
+}
+
+/* =========================
+   FILM BARS
+========================= */
+
+.bar {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 8vh;
+    background: #000;
+    z-index: 10;
+}
+
+.bar.top { top: 0; }
+.bar.bottom { bottom: 0; }
+
+/* =========================
+   CARD
+========================= */
+
+
+
+/* =========================
+   FLOWERS
+========================= */
+
+.flower {
+    position: absolute;
+    font-size: 45px;
+    opacity: .7;
+    animation: floatFlower 7s infinite ease-in-out;
+}
+
+.f1 {
+    left: 5%;
+    top: 18%;
+}
+
+.f2 {
+    right: 5%;
+    top: 25%;
+    animation-delay: 2s;
+}
+
+.f3 {
+    left: 10%;
+    bottom: 15%;
+    animation-delay: 1s;
+}
+
+.f4 {
+    right: 8%;
+    bottom: 18%;
+    animation-delay: 3s;
+}
+
+@keyframes floatFlower {
+    0%,100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-25px) rotate(15deg);
+    }
+}
+
+/* =========================
+   PARTICLES
+========================= */
+
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #f5d98b;
+    opacity: .6;
+    animation: particleMove linear infinite;
+}
+
+@keyframes particleMove {
+    from {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+    20% {
+        opacity: .8;
+    }
+    80% {
+        opacity: .8;
+    }
+    to {
+        transform: translateY(-10vh);
+        opacity: 0;
+    }
+}
+
+/* =========================
+   CONFETTI
+========================= */
+
+.confetti {
+    position: absolute;
+    width: 7px;
+    height: 14px;
+    top: -20px;
+    animation: fall 4s linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px) {
+
+    .card {
+        min-height: 570px;
+        padding: 45px 22px;
+    }
+
+    .card h1 {
+        font-size: 35px;
+    }
+
+    .flower {
+        font-size: 32px;
+    }
+
+    .bar {
+        height: 5vh;
+    }
+}

@@ -1,95 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIJAY-GAYU-MARRIAGE-INVITATION</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scratch Card</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Libertinus+Serif:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Sekuya&display=swap" rel="stylesheet">    <link rel="stylesheet" href="style.css">
+<style>
+* {
+  box-sizing: border-box;
+}
 
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #f8d7a4, #f5b7c8);
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  text-align: center;
+}
+
+h2 {
+  color: #7b263a;
+  margin-bottom: 20px;
+}
+
+.scratch-card {
+  position: relative;
+  width: 320px;
+  height: 180px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  background: white;
+}
+
+.prize {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #fff8e7;
+  color: #7b263a;
+}
+
+.prize .emoji {
+  font-size: 45px;
+}
+
+.prize h1 {
+  margin: 8px 0;
+  font-size: 27px;
+}
+
+.prize p {
+  margin: 0;
+}
+
+canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  touch-action: none;
+}
+
+.progress {
+  margin-top: 15px;
+  color: #7b263a;
+  font-weight: bold;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 25px;
+  background: #7b263a;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+</style>
 </head>
+
 <body>
-          <div class="invitation">
 
-  <!-- Tap to open screen -->
-  <div class="cover">
-     <img src="7.jpeg" class="image7" height="100%" width="100%">
-      <img src="8.jpeg" class="image8" height="100%" width="100%">
+<div class="container">
 
-    <div class="cover-content">
-      <!-- <div style="font-size:50px;">💍</div> -->
+  <h2>🎁 Scratch & Win 🎁</h2>
 
-      <p class="p1">You're Invited</p1>
+  <div class="scratch-card" id="card">
 
-      <h1 class="h1">Wedding Invitation</h1>
-
-      <p class="p2">Tap below to open</p>
-
-      <button class="open-btn" onclick="openInvitation()">
-        💌 Open Invitation
-      </button>
+    <div class="prize">
+      <div class="emoji">🎉</div>
+      <h1>Congratulations!</h1>
+      <p>You Won ₹500 🎊</p>
     </div>
+
+    <canvas id="scratchCanvas"></canvas>
+
   </div>
 
-    <section class="parallex">
-        <h1 class="text1">VIJAY</h1>
-        <h3 class="text2">&#x1F495;</h3>
-        <h1 class="text3">GAYATHRI</h1>
-        <h2 class="text4">WE'RE GETTING MARRIED</h2>
-        <h5 class="word1">scroll down &#x2304;</h5>   
-        <img src="1.jpeg" id="hill3" height="100%" width="100%" >
-    </section>
-    </div>
-      <section class="sec-1">
-        <img src="4.jpeg" id="hill3" height="100%" width="100%" > -->
-        <img src="5.jpeg" class="image5" width="100px" height="100px">
-        <img src="6.png" class="image6" width="100px" height="100px">
-      <p1 class="animate">&#9829 “✨ Love is in the air ✨ Join us for a magical celebration of love, happiness, and togetherness 💕”<br><br></p1>
-      </section>
-      <section class="good">
-        <img src="9.jpeg" width="100%" height="100%">
-      <div class="scratch-card">
-      <div class="popup">
-        <P>DATE: 12-09-2026 <br><br>DAY: SATURDAY<br><br>TIME: 4:00PM<br><br>VENUE: ARS MAHAL</P>
-        </div>
-        
-        <canvas id="scratchCanvas"></canvas>
-        
-       </div>
-       <div class="countdown">
-        <h1>Counting Down To ForEver &#x1F495;</h1>
-        <div class="timer">
-            <div class="box">
-                <span id="days">00</span>
-                <small>Days</small>
-            </div>
-            <div class="box">
-                <span id="hours">00</span>
-                <small>Hours</small>
-            </div>
-            <div class="box">
-                <span id="minutes">00</span>
-                <small>Minutes</small>
-            </div>
-            <div class="box">
-                <span id="seconds">00</span>
-                <small>Seconds</small>
-            </div>
-            <div id="message"></div>
-        </div>
-        </div>
-      </section>
+  <div class="progress" id="progress">
+    Scratched: 0%
+  </div>
 
-      <!-- <section class="timeline-activity"></section> -->
-       <div class="last">
-        <h1>Function Timeline</h1>
-        <p> 5PM: GUEST ARRIVAL<br><br>6PM: RECEPTION <br><br> 7PM: DINNER</p>
-        <h2>&#x1F491;<br><br>இணைந்த இரு இதயங்கள்<br><br> இனிதாய் பயணிக்கட்டும்<br><br>&#x1F491;</h2>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3905.2379363945975!2d77.8576401!3d11.818602199999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baeab485680d851%3A0x3156b353f1568044!2sARS%20Mahal%20(Marriage%20Hall)!5e0!3m2!1sen!2sin!4v1786446778052!5m2!1sen!2sin" width="200px" height="200px" style="border:2px solid gray;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-       </div>
-            <script src="script.js"></script>
+  <button onclick="resetCard()">🔄 Try Again</button>
+
+</div>
+
+<script>
+const canvas = document.getElementById("scratchCanvas");
+const ctx = canvas.getContext("2d");
+const card = document.getElementById("card");
+const progressText = document.getElementById("progress");
+
+let isDrawing = false;
+let scratched = false;
+
+function setupCanvas() {
+
+  const rect = card.getBoundingClientRect();
+
+  canvas.width = rect.width;
+  canvas.height = rect.height;
+
+  // Scratch layer
+  ctx.fillStyle = "#999";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Decorative text
+  ctx.fillStyle = "#ffffff";
+  ctx.font = "bold 24px Arial";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText(
+    "SCRATCH HERE",
+    canvas.width / 2,
+    canvas.height / 2
+  );
+
+  // Add dots
+  for (let i = 0; i < 100; i++) {
+    ctx.fillStyle = "rgba(255,255,255,0.25)";
+    ctx.beginPath();
+    ctx.arc(
+      Math.random() * canvas.width,
+      Math.random() * canvas.height,
+      2,
+      0,
+      Math.PI * 2
+    );
+    ctx.fill();
+  }
+}
+
+setupCanvas();
+
+function getPosition(e) {
+
+  const rect = canvas.getBoundingClientRect();
+
+  if (e.touches) {
+    return {
+      x: e.touches[0].clientX - rect.left,
+      y: e.touches[0].clientY - rect.top
+    };
+  }
+
+  return {
+    x: e.clientX - rect.left,
+    y: e.clientY - rect.top
+  };
+}
+
+function scratch(e) {
+
+  if (!isDrawing) return;
+
+  const pos = getPosition(e);
+
+  ctx.globalCompositeOperation = "destination-out";
+
+  ctx.beginPath();
+  ctx.arc(pos.x, pos.y, 50, 0, Math.PI * 2);
+  ctx.fill();
+
+  checkProgress();
+}
+
+canvas.addEventListener("mousedown", () => {
+  isDrawing = true;
+});
+
+canvas.addEventListener("mouseup", () => {
+  isDrawing = false;
+});
+
+canvas.addEventListener("mouseleave", () => {
+  isDrawing = false;
+});
+
+canvas.addEventListener("mousemove", scratch);
+
+canvas.addEventListener("touchstart", (e) => {
+  e.preventDefault();
+  isDrawing = true;
+  scratch(e);
+});
+
+canvas.addEventListener("touchmove", (e) => {
+  e.preventDefault();
+  scratch(e);
+});
+
+canvas.addEventListener("touchend", () => {
+  isDrawing = false;
+});
+
+function checkProgress() {
+
+  const pixels = ctx.getImageData(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  ).data;
+
+  let transparent = 0;
+
+  for (let i = 3; i < pixels.length; i += 4) {
+    if (pixels[i] === 0) {
+      transparent++;
+    }
+  }
+
+  const total = canvas.width * canvas.height;
+
+  const percentage = Math.round(
+    (transparent / total) * 100
+  );
+
+  progressText.innerText =
+    "Scratched: " + percentage + "%";
+
+  if (percentage >= 50 && !scratched) {
+
+    scratched = true;
+
+    // Automatically reveal remaining area
+    ctx.clearRect(
+      0,
+      0,
+      canvas.width,
+      canvas.height
+    );
+
+    progressText.innerText =
+      "🎉 Prize Revealed! 🎉";
+
+    createConfetti();
+  }
+}
+
+function resetCard() {
+
+  scratched = false;
+
+  setupCanvas();
+
+  progressText.innerText =
+    "Scratched: 0%";
+}
+
+
+// Confetti
+function createConfetti() {
+
+  for (let i = 0; i < 80; i++) {
+
+    const confetti = document.createElement("div");
+
+    confetti.innerHTML = ["🎉","🎊","✨","💖"][
+      Math.floor(Math.random() * 4)
+    ];
+
+    confetti.style.position = "fixed";
+    confetti.style.left =
+      Math.random() * 100 + "vw";
+
+    confetti.style.top = "-30px";
+
+    confetti.style.fontSize =
+      Math.random() * 20 + 15 + "px";
+
+    confetti.style.zIndex = "9999";
+
+    document.body.appendChild(confetti);
+
+    const duration =
+      Math.random() * 2000 + 2000;
+
+    confetti.animate(
+      [
+        {
+          transform: "translateY(0) rotate(0deg)"
+        },
+        {
+          transform:
+            "translateY(110vh) rotate(720deg)"
+        }
+      ],
+      {
+        duration: duration,
+        easing: "ease-in"
+      }
+    );
+
+    setTimeout(() => {
+      confetti.remove();
+    }, duration);
+  }
+}
+</script>
+
 </body>
 </html>
-
